@@ -221,6 +221,7 @@ int main(int argc, char **argv)
     struct ledscreen maindisp;
     struct ledscreen *disp;
     char *msg = "";
+    char msg_dest[100];
 
     disp              = &maindisp;
     disp->brightness  = 2;
@@ -245,7 +246,9 @@ int main(int argc, char **argv)
             continue;
         }
 
-        scrollmsg(disp, msg);
+        sprintf(msg_dest, "%s    ", msg);
+
+        scrollmsg(disp, msg_dest);
     } while (1);
 
     close_usbdev(disp);
