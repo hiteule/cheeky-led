@@ -197,6 +197,10 @@ void scrollmsg(struct ledscreen *disp, char* buf)
     char *p = NULL;
 
     for (p = buf; *p != '\0'; p++) {
+        if (*p < 0 || *p > 255) {
+            continue;
+        }
+
         scrollchar(disp,*p);
     }
 
